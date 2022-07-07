@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "title": "Bairro Sarandi em Porto Alegre",
+        "image": "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?cs=srgb&dl=pexels-pixabay-271624.jpg&fm=jpg"   
+    },
+    {
+        "id": "2",
+        "title": "Bairro centro em Porto Alegre",
+        "image": "https://images.pexels.com/photos/2462015/pexels-photo-2462015.jpeg?cs=srgb&dl=pexels-jovydas-pinkevicius-2462015.jpg&fm=jpg"   
+    },
+    {
+        "id": "3",
+        "title": "Bairro Higienópolis em Porto Alegre",
+        "image": "https://images.pexels.com/photos/129494/pexels-photo-129494.jpeg?cs=srgb&dl=pexels-george-becker-129494.jpg&fm=jpg"   
+    },
+    {
+        "id": "4",
+        "title": "Bairro Petrópolis em Porto Alegre",
+        "image": "https://images.pexels.com/photos/2111768/pexels-photo-2111768.jpeg?cs=srgb&dl=pexels-luis-quintero-2111768.jpg&fm=jpg"   
+    },
+    {
+        "id": "5",
+        "title": "Bairro São Luiz em Porto Alegre",
+        "image": "https://images.pexels.com/photos/981916/pexels-photo-981916.jpeg?cs=srgb&dl=pexels-sevenstorm-juhaszimrus-981916.jpg&fm=jpg"   
+    },
+    {
+        "id": "6",
+        "title": "Bairro São Pedro em Porto Alegre",
+        "image": "https://images.pexels.com/photos/2370932/pexels-photo-2370932.jpeg?cs=srgb&dl=pexels-anna-filyaeva-2370932.jpg&fm=jpg"   
+    },
+    {
+        "id": "7",
+        "title": "Bairro São Pedro em Porto Alegre",
+        "image": "https://images.pexels.com/photos/2370932/pexels-photo-2370932.jpeg?cs=srgb&dl=pexels-anna-filyaeva-2370932.jpg&fm=jpg"   
+    }
+]

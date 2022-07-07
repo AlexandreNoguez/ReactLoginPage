@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .content {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-secondary);
+    border-radius: .4rem;
+    box-shadow: 5px 5px 5px 2px #000;
+    max-width: 768px;
+    padding: 1rem 2rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container .content h1 {
+    color: var(--title);
+    font-size: var(--title-size);
+}
+
+.container .content p {
+    color: var(--text);
+    font-size: var(--text-size);
+}
+
+.register-form input {
+    display: flex;
+    flex-direction: column;
+    padding: .3rem 1rem;
+    border-radius: .3rem;
+    margin: .5rem 0;
+}
+
+.register-form .buttons {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.register-form .buttons .cancel {
+    background-color: var(--button-red);
+    color: var(--button-white);
+    padding: .3rem 1rem;
+    margin: .4rem;
+    border-radius: .3rem;
+}
+
+.register-form .buttons .confirm {
+    background-color: var(--background-button);
+    color: var(--button-white);
+    padding: .3rem 1rem;
+    margin: .4rem;
+    border-radius: .3rem;
+}

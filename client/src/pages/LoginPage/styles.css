@@ -1,0 +1,84 @@
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+}
+
+#login .login-text {
+    color: var(--text);
+    max-width: 368px;
+    margin: auto;
+    text-align: center;
+}
+
+#login h1 {
+    color: var(--title);
+}
+
+
+#login .form {
+    background-color: var(--background-secondary);
+    width: 100%;
+    max-width: 480px;
+    flex-direction: column;
+    border-radius: .4rem;
+    box-shadow: 5px 5px 5px 2px #000;
+    padding: 1rem 2rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#login .field {
+    padding: 0.5rem;
+}
+
+#login .field label {
+    display: block;
+    text-align: center;
+    color: var(--text);
+}
+
+#login .field input {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    padding: .2rem;
+    border-radius: .3rem;
+    border: none;
+}
+
+#login .actions {
+    text-align: center;
+    margin-top: 1rem;
+
+}
+
+#login .actions button {
+    background-color: var(--background-button);
+    color: var(--button-white);
+    padding: .5rem 2rem;
+    border: 1px solid white;
+    border-radius: .5rem;
+}
+
+#login .actions button:hover {
+    transition: .3s;
+    opacity: .6;
+}
+
+#login .register {
+    display: block;
+    border: 1px solid white;
+    border-radius: .5rem;
+    margin: 1rem auto;
+    background-color: var(--background);
+    color: var(--text);
+    padding: .3rem .5rem;
+    text-align: center;
+
+}

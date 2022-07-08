@@ -12,15 +12,21 @@ function generateToken(params = {}){
 
 exports.registerNewUser = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        const { name, surname, email, password, password2  } = req.body;
 
-        if (!email) {
+        if (!name) {
             return res.status(400).send({ error: 'Invalid user name' })
         }
-        if (!password) {
+        if (!surname) {
+            return res.status(400).send({ error: 'Invalid user name' })
+        }
+        if (!email && email === email) {
+            return res.status(400).send({ error: 'user already exists' })
+        }
+        if (!password && password !== password2) {
             return res
                 .status(400)
-                .send({ error: 'Invalid user description' })
+                .send({ error: 'Invalid password or does not match' })
         }
 
         if (await User.findOne({ email })) {
@@ -28,6 +34,7 @@ exports.registerNewUser = async (req, res) => {
         }
         const user = await User.create(req.body);
         user.password = undefined
+        user.password2 = undefined
         
         return res.send({ 
             user,
@@ -51,6 +58,7 @@ exports.authenticateUser = async (req, res) => {
         return res.status(400).send({error: 'User and password do not match2'});
     }
     user.password = undefined;
+    user.password2 = undefined;
 
     res.send({ 
         user, 
@@ -80,6 +88,7 @@ exports.listOneUserById = async (req, res) => {
         const userId = req.params.id
         const user = await User.findOne({_id: userId})
         user.password = undefined
+        user.password2 = undefined
 
         return res.status(200).send(user)
     } catch (err) {
@@ -129,6 +138,7 @@ exports.deleUserById = async (req, res) => {
         await User.findOneAndDelete({ _id: userId })
 
         user.password = undefined
+        user.password2 = undefined
 
         return res.status(200).send({ message: 'Removed successfuly' })
     } catch (err) {

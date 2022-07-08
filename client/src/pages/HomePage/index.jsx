@@ -59,8 +59,8 @@ function HomePage() {
         return (
             <div className="loading">
                 Erro ao carregar.
-                <Link onClick={handleLogout} to="/">
-                    Voltar
+                <Link onClick={loadData()} to="/home">
+                    🚀Voltar
                 </Link>
             </div>
         );

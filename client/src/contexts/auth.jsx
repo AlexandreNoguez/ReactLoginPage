@@ -3,28 +3,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { api, createSession } from "../services/api";
-
-// export interface IAuthContext {
-//     user?: {
-//         email: string;
-//         password: string;
-//     } | null;
-//     authenticated?: boolean;
-//     loading: boolean;
-//     token: string;
-//     handleLogin?: (email: string, password: string) => void;
-//     handleLogout?: () => void;
-// }
-
-// export interface IAuthContextProvider {
-//     children: React.ReactNode;
-// }
-
-// export interface IHandleLoginProps {
-//     email: string;
-//     password: string;
-// }
+import { api, createSession, createNewUser } from "../services/api";
 
 export const AuthContext = createContext("");
 
@@ -42,6 +21,21 @@ function AuthContextProvider({ children }) {
         }
         setLoading(false);
     }, []);
+
+    const handleCreateNewUser = async (data) => {
+        const response = await createNewUser(data);
+        console.log("response.data", response);
+        const { user } = response.data;
+        const { token } = response.data;
+        // console.log("response", response);
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("token", token);
+
+        // console.log("token do auth", token);
+        api.defaults.headers.Authorization = `Bearer ${token}`;
+        setUser(user);
+        navigate("/home");
+    };
 
     const handleLogin = async (email, password) => {
         const response = await createSession(email, password);
@@ -71,8 +65,10 @@ function AuthContextProvider({ children }) {
                 authenticated: !!user,
                 user,
                 loading,
+                navigate,
                 handleLogin,
                 handleLogout,
+                handleCreateNewUser,
             }}
         >
             {children}

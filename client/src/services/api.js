@@ -34,10 +34,10 @@ const getRepositoryName = (url) => {
     }
 };
 
-export const createRepository = async (userId, repositoryUrl) => {
-    // console.log("createRepository", userId, repositoryUrl);
+export const createRepository = async (userId, repositoryUrl, error) => {
     const repositoryName = getRepositoryName(repositoryUrl);
     const url = `/user/${userId}/repositories/`;
+
 
     return api.post(url, {
         name: repositoryName,

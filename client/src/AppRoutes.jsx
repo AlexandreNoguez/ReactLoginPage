@@ -8,6 +8,7 @@ import { AuthContext } from "./contexts/auth";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NewRegister from "./pages/NewRegister";
+import UserTerms from "./pages/UserTerms";
 // interface IAppRoutesProps {
 //     children: React.ReactNode;
 // }
@@ -29,6 +30,7 @@ function AppRoutes() {
         <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route path="/cadastro" element={<NewRegister />} />
+            <Route path="/termos" element={<UserTerms />} />
             <Route
                 path="/home"
                 element={

@@ -1,0 +1,5 @@
+#agreement-terms :where(h1, h2, h3, p, span, strong a, ul, li) {
+    text-align: center;
+    color: var(--text);
+    margin: 1rem 10rem;
+}

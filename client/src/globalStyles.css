@@ -9,6 +9,21 @@
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scrollbar-color: var(--background);
+    scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--background-repo);
+    border-radius: 1rem;
 }
 
 a {
@@ -23,6 +38,7 @@ a {
     --background-repo: #a08b81;
     --title: #fdf2c5;
     --text: #efe8b2;
+    --text-error: #ff0000;
     --text-contrast: #342220;
     --button-white: #f9f9f9;
     --button-red: #aa0000;

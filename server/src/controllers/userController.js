@@ -15,10 +15,10 @@ exports.registerNewUser = async (req, res) => {
         const { name, surname, email, password, password2  } = req.body;
 
         if (!name) {
-            return res.status(400).send({ error: 'Invalid user name' })
+            return res.status(400).send({ error: 'name is required' })
         }
         if (!surname) {
-            return res.status(400).send({ error: 'Invalid user name' })
+            return res.status(400).send({ error: 'surname is required' })
         }
         if (!email && email === email) {
             return res.status(400).send({ error: 'user already exists' })
@@ -49,7 +49,6 @@ exports.authenticateUser = async (req, res) => {
     try {
     const  { email, password }  = req.body;
     const user = await User.findOne({ email }).select('+password');
-    console.log(user)
     if(!user){
         return res.status(400).send({ error: 'User and password do not match1' })
     }
@@ -73,8 +72,8 @@ exports.authenticateUser = async (req, res) => {
 
 exports.listAllUser = async (req, res) => {
     try {
-        console.log(req.params)
         const users = await User.find()
+        console.log(users.password)
         users.password = undefined
 
         return res.status(200).send(users)

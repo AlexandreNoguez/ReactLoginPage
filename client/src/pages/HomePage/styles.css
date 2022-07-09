@@ -119,8 +119,8 @@ ul li div.info {
 
 }
 
-.owner span,
-.name span {
+.owner .owner-repo,
+.repo-name .name-repo {
     color: var(--button-white);
 }
 

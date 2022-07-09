@@ -23,7 +23,7 @@ function HomePage() {
     const loadData = async (query = "") => {
         try {
             const response = await getRepositories(user?._id, query);
-            console.log("getRepo", response);
+            // console.log("getRepo", response);
             setRepositories(response.data);
             setLoading(false);
         } catch (error) {

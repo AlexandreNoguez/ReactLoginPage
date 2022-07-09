@@ -11,11 +11,11 @@ function Repositories({ handleDeleteRepo, handleAddNewRepo, repositories }) {
                     <li className="item" key={repo._id}>
                         <div className="info">
                             <div className="owner">
-                                <span>De: </span>
+                                <span className="owner-repo">De: </span>
                                 {repo.name.substring(0, repo.name.indexOf("/"))}
                             </div>
-                            <div className="name">
-                                <span>Repo: </span>
+                            <div className="repo-name">
+                                <span className="name-repo">Repo: </span>
 
                                 {repo.name.substring(
                                     repo.name.indexOf("/") + 1

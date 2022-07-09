@@ -7,26 +7,28 @@ exports.registerNewRepository = async (req, res) => {
         const { name, url } = req.body;
         
         const user = await User.findById(user_id)
-        
-        if(!user) return res.status(404).send()
+        console.log('user', user)
+        // if(!user) return res.status(404).send()
         
         const repository = await Repository.findOne({
             userId: user_id,
-            url
+            url,
         })
+        console.log('repository', repository)
 
-        if(repository){
-            return res.status(422).send({ message: `Repository ${name} already exists`})
-        }
+        // if(user.url === user.url){
+        //     return res.status(422).send({ message: `Repository ${name} already exists`})
+        // }
 
         const newRepository = await Repository.create({
             name,
             url,
             userId: user_id
         })
-
+        console.log(newRepository)
         return res.status(201).send(newRepository)
     } catch (err) {
+        console.log(err)
         return res.status(400).send({ error: 'Failed listing' })
     }
 }

@@ -23,15 +23,15 @@ function AuthContextProvider({ children }) {
     }, []);
 
     const handleCreateNewUser = async (data) => {
-        const response = await createNewUser(data);
-        console.log("response.data", response);
+
+        const response = await createNewUser(data, error);
+
         const { user } = response.data;
         const { token } = response.data;
-        // console.log("response", response);
+
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
 
-        // console.log("token do auth", token);
         api.defaults.headers.Authorization = `Bearer ${token}`;
         setUser(user);
         navigate("/home");
@@ -39,7 +39,7 @@ function AuthContextProvider({ children }) {
 
     const handleLogin = async (email, password) => {
         const response = await createSession(email, password);
-        // console.log("response.data", response.data);
+        console.log("response.data", response);
         const { user } = response.data;
         const { token } = response.data;
         // console.log("response", response);

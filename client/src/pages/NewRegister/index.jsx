@@ -9,6 +9,7 @@ import PhoneInput from 'react-phone-number-input/input'
 
 import 'react-phone-number-input/style.css'
 import "./styles.css";
+import { toast } from 'react-toastify';
 
 
 // console.log('yup', type(yup))
@@ -18,7 +19,7 @@ function NewRegister() {
     const onSubmit = async (data) => {
 
         if (data.password !== data.password2) {
-            alert('Senhas estão diferentes, tente novamente')
+            toast.error('Senhas não estão idênticas, tente novamente.')
             navigate('/cadastro')
             console.log("data dentro do IF ON SUBMIT", data)
             return console.log('Erro dentro do IF ON SUBMIT', data)
@@ -34,6 +35,7 @@ function NewRegister() {
     }
 
     const onError = (error) => {
+        toast.error('Confira todos os campos antes de enviar.')
         console.log('error: ', error)
     }
 

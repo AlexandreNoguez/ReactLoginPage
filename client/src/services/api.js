@@ -1,17 +1,30 @@
 /* eslint-disable consistent-return */
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const api = axios.create({
     baseURL: "http://localhost:3333/api",
 });
 
 export const createNewUser = async (data) => {
-    console.log('createNewUser', data);
-    return api.post("/user", data)
+    try {
+        api.post("/user", data)
+        return toast.success("Usuário criado com sucesso!")  
+            
+    } catch (error) {
+            console.error("createNewUser", error)
+            return toast.error("Usuário já existente, tente recuperar a senha.") 
+    }
 };
 
 export const createSession = async (email, password) => {
-    return api.post("/user/authenticate", { email, password });
+    try {
+        // console.log(email)
+        return api.post("/user/authenticate", { email, password })
+    } catch (error) {
+        console.log(error)
+        if(error) return toast.error("Usuário ou senha inválido.")
+    }
 };
 
 export const getRepositories = async (userId, query) => {
@@ -34,18 +47,29 @@ const getRepositoryName = (url) => {
     }
 };
 
-export const createRepository = async (userId, repositoryUrl, error) => {
-    const repositoryName = getRepositoryName(repositoryUrl);
-    const url = `/user/${userId}/repositories/`;
-
-
-    return api.post(url, {
-        name: repositoryName,
-        url: repositoryUrl,
-    });
+export const createRepository = async (userId, repositoryUrl) => {
+    try {
+        const repositoryName = getRepositoryName(repositoryUrl);
+        const url = `/user/${userId}/repositories/`;
+        toast.success("Repositório adicionado com sucesso.")
+        return api.post(url, {name: repositoryName, url: repositoryUrl})
+    } catch (error) {
+        if(error) return toast.error("Ocorreu alguma falha ao adicionar repositório.")        
+    }
+        
+ 
 };
 
 export const deleteRepository = async (userId, id) => {
+    
     const url = `/user/${userId}/repositories/${id}`;
-    return api.delete(url);
+    await api.delete(url)
+        .then((response) => {
+            console.info(response)
+            return toast.success('Repositório deletado com sucesso.')
+        })
+        .catch((error)=>{
+            console.error(error)
+            return toast.error("Falha ao tentar deletar repositório.")
+        })
 };

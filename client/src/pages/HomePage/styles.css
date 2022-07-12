@@ -27,6 +27,11 @@
 
 }
 
+.homeHeader .user-name {
+    background-color: #000;
+    color: red;
+}
+
 div.search {
     display: flex;
     background-color: var(--background-secondary);

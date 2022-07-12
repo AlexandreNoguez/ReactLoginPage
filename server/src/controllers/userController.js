@@ -12,7 +12,7 @@ function generateToken(params = {}){
 
 exports.registerNewUser = async (req, res) => {
     try {
-        const { name, surname, email, password, password2  } = req.body;
+        const { name, surname, phone, email, password, password2  } = req.body;
 
         if (!name) {
             return res.status(400).send({ error: 'name is required' })
@@ -20,10 +20,11 @@ exports.registerNewUser = async (req, res) => {
         if (!surname) {
             return res.status(400).send({ error: 'surname is required' })
         }
-        if (!email && email === email) {
+        if (!email) {
             return res.status(400).send({ error: 'user already exists' })
         }
         if (!password && password !== password2) {
+            console.log(res.message)
             return res
                 .status(400)
                 .send({ error: 'Invalid password or does not match' })
@@ -32,7 +33,9 @@ exports.registerNewUser = async (req, res) => {
         if (await User.findOne({ email })) {
             return res.status(400).send({ error: 'Already exists' })
         }
+
         const user = await User.create(req.body);
+        
         user.password = undefined
         user.password2 = undefined
         
@@ -72,11 +75,13 @@ exports.authenticateUser = async (req, res) => {
 
 exports.listAllUser = async (req, res) => {
     try {
-        const users = await User.find()
-        console.log(users.password)
-        users.password = undefined
+        const user = await User.find()
+        console.log(res.user)
+        
+        user.password = undefined
+        user.password2 = undefined
 
-        return res.status(200).send(users)
+        return res.status(200).send(user)
     } catch (err) {
         return res.status(400).send({ error: 'Failed listing all' })
     }

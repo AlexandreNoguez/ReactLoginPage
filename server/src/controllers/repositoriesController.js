@@ -16,16 +16,18 @@ exports.registerNewRepository = async (req, res) => {
         })
         console.log('repository', repository)
 
-        // if(user.url === user.url){
+        const newRepository = await Repository.create({
+            userId: user_id,
+            name,
+            url
+        })
+        // if(user && name && url){
+        //     console.log('if DENTRO', user, url)
         //     return res.status(422).send({ message: `Repository ${name} already exists`})
         // }
-
-        const newRepository = await Repository.create({
-            name,
-            url,
-            userId: user_id
-        })
         console.log(newRepository)
+        user.password = undefined
+        user.password2 = undefined
         return res.status(201).send(newRepository)
     } catch (err) {
         console.log(err)
@@ -92,6 +94,8 @@ exports.listUserRepositories = async (req, res) => {
             userId: user_id,
             ...query
         })
+        user.password = undefined
+        user.password2 = undefined
         return res.status(200).send(repositories)
     } catch (err) {
         return res.status(400).send({ error: 'Failed listing by id' })

@@ -9,9 +9,6 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import NewRegister from "./pages/NewRegister";
 import UserTerms from "./pages/UserTerms";
-// interface IAppRoutesProps {
-//     children: React.ReactNode;
-// }
 
 function AppRoutes() {
     function Private({ children }) {
@@ -43,7 +40,7 @@ function AppRoutes() {
                 path="*"
                 element={
                     <Private>
-                        <HomePage />
+                        <LoginPage />
                     </Private>
                 }
             />

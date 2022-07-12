@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import Repositories from "../../components/Repositories";
 import SearchBar from "../../components/SearchBar";
+
 import { AuthContext } from "../../contexts/auth";
 import {
     getRepositories,
@@ -23,17 +24,17 @@ function HomePage() {
     const loadData = async (query = "") => {
         try {
             const response = await getRepositories(user?._id, query);
-            // console.log("getRepo", response);
             setRepositories(response.data);
             setLoading(false);
+
         } catch (error) {
-            console.error(error);
+            console.log(error)
             setLoadingError(true);
         }
     };
 
     useEffect(() => {
-        loadData();
+        (async () => await loadData())();
     }, []);
 
     const handleSearch = (query) => {
@@ -41,7 +42,6 @@ function HomePage() {
         // console.log("query", query);
     };
     const handleDeleteRepo = async (repository) => {
-        // console.log("delete repo", repository);
         await deleteRepository(user?._id, repository._id);
         loadData();
     };
@@ -49,9 +49,10 @@ function HomePage() {
         try {
             await createRepository(user?._id, url);
             await loadData();
+
         } catch (error) {
-            console.error(error);
-            setLoadingError(true);
+            console.error("CATCH DA HOME", error);
+            if (error) return setLoadingError(true);
         }
     };
 
@@ -72,7 +73,7 @@ function HomePage() {
 
     return (
         <div>
-            <Header handleLogout={handleLogout} />
+            <Header handleLogout={handleLogout} userId={user} />
             <SearchBar handleSearch={handleSearch} />
             <Repositories
                 repositories={repositories}

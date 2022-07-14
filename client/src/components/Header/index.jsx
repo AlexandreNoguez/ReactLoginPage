@@ -6,7 +6,7 @@ function Header({ handleLogout }) {
     return (
         <header className="homeHeader">
             <h1>Repo Storage</h1>
-            <span>Olá! <strong>{user.name}</strong></span>
+            <span>Olá! <strong className="user-name">{user.name}</strong>!</span>
             <button type="submit" onClick={handleLogout}>
                 Sair
             </button>

@@ -20,7 +20,7 @@ const UsersSchema = new mongoose.Schema(
             require: true,
             index:{
                 unique: true
-            }
+            },
         },
         password: {
             type: String,
@@ -29,7 +29,7 @@ const UsersSchema = new mongoose.Schema(
         password2: {
             type: String,
             require: true
-        }
+        },
     }, { timestamps: true });
 
 UsersSchema.pre('save', async function (next){

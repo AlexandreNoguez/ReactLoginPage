@@ -26,7 +26,7 @@ function HomePage() {
             const response = await getRepositories(user?._id, query);
             setRepositories(response.data);
             setLoading(false);
-
+            console.log(" loadData", response)
         } catch (error) {
             console.log(error)
             setLoadingError(true);
@@ -48,7 +48,7 @@ function HomePage() {
     const handleAddNewRepo = async (url) => {
         try {
             await createRepository(user?._id, url);
-            await loadData();
+            loadData();
 
         } catch (error) {
             console.error("CATCH DA HOME", error);

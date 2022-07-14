@@ -68,7 +68,6 @@ exports.authenticateUser = async (req, res) => {
         message: 'User logged in successfuly',
     });
 } catch (err) {
-    console.log(err)
     return res.status(400).send({error: 'User and password do not match3'});
 }
 }
@@ -76,10 +75,10 @@ exports.authenticateUser = async (req, res) => {
 exports.listAllUser = async (req, res) => {
     try {
         const user = await User.find()
-        console.log(res.user)
+        console.log(user)
         
-        user.password = undefined
-        user.password2 = undefined
+        user.email = undefined
+        // user.password2 = undefined
 
         return res.status(200).send(user)
     } catch (err) {

@@ -24,7 +24,7 @@ function AuthContextProvider({ children }) {
 
     const handleCreateNewUser = async (data) => {
 
-        const response = await createNewUser(data, error);
+        const response = await createNewUser(data);
 
         const { user } = response.data;
         const { token } = response.data;

@@ -22,7 +22,7 @@ function NewRegister() {
             toast.error('Senhas não estão idênticas, tente novamente.')
             navigate('/cadastro')
             console.log("data dentro do IF ON SUBMIT", data)
-            return console.log('Erro dentro do IF ON SUBMIT', data)
+            // return console.log('Erro dentro do IF ON SUBMIT', data)
         }
         await createNewUser(data)
         navigate("/home")

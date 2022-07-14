@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable react/jsx-no-constructed-context-values */
 import { useContext } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 

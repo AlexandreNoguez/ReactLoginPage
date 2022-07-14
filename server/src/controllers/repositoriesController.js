@@ -8,11 +8,13 @@ exports.registerNewRepository = async (req, res) => {
         
         const user = await User.findById(user_id)
         console.log('user', user)
+        console.log('name', name)
         // if(!user) return res.status(404).send()
         
         const repository = await Repository.findOne({
             userId: user_id,
             url,
+            
         })
         console.log('repository', repository)
 
@@ -25,13 +27,13 @@ exports.registerNewRepository = async (req, res) => {
         //     console.log('if DENTRO', user, url)
         //     return res.status(422).send({ message: `Repository ${name} already exists`})
         // }
-        console.log(newRepository)
-        user.password = undefined
-        user.password2 = undefined
+        // console.log(newRepository)
+        // user.password = undefined
+        // user.password2 = undefined
         return res.status(201).send(newRepository)
     } catch (err) {
         console.log(err)
-        return res.status(400).send({ error: 'Failed listing' })
+        return res.status(400).send({ error: 'Failed creating repository' })
     }
 }
 

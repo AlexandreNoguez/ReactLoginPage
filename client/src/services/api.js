@@ -1,5 +1,4 @@
-/* eslint-disable consistent-return */
-import axios from "axios";
+import axios from 'axios'
 import { toast } from "react-toastify";
 
 export const api = axios.create({
@@ -8,12 +7,14 @@ export const api = axios.create({
 
 export const createNewUser = async (data) => {
     try {
-        api.post("/user", data)
-        return toast.success("Usuário criado com sucesso!")  
+        toast.success("Usuário criado com sucesso!")  
+        return api.post("/user", data).then((res) => {
+            console.log("res do create", res)
+        })
             
     } catch (error) {
-            console.error("createNewUser", error)
-            return toast.error("Usuário já existente, tente recuperar a senha.") 
+        console.error("createNewUser", error)
+        return toast.error("Usuário já existente, tente recuperar a senha.") 
     }
 };
 
@@ -54,7 +55,7 @@ export const createRepository = async (userId, repositoryUrl) => {
         toast.success("Repositório adicionado com sucesso.")
         return api.post(url, {name: repositoryName, url: repositoryUrl})
     } catch (error) {
-        if(error) return toast.error("Ocorreu alguma falha ao adicionar repositório.")        
+        return toast.error("Ocorreu alguma falha ao adicionar repositório.")        
     }
         
  

@@ -27,10 +27,9 @@
 
 }
 
-.homeHeader .user-name {
-    background-color: #000;
-    color: red;
-}
+/* .homeHeader .user-name {
+    font-size: 1rem;
+} */
 
 div.search {
     display: flex;

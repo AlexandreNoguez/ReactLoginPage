@@ -11,8 +11,8 @@ function Repositories({ handleDeleteRepo, handleAddNewRepo, repositories }) {
                     <li className="item" key={repo._id}>
                         <div className="info">
                             <div className="owner">
-                                {console.log(repo.name)}
-                                {console.log(repo)}
+                                {/* {console.log(repo.name)} */}
+                                {/* {console.log(repo)} */}
                                 <span className="owner-repo">De: </span>
                                 {repo.name.substring(0, repo.name.indexOf("/"))}
                             </div>

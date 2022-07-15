@@ -16,6 +16,7 @@ import { toast } from 'react-toastify';
 function NewRegister() {
     const [phoneValue, setPhoneValue] = useState()
     const navigate = useNavigate();
+
     const onSubmit = async (data) => {
 
         if (data.password !== data.password2) {
@@ -26,8 +27,6 @@ function NewRegister() {
         }
         await createNewUser(data)
         navigate("/home")
-        console.log('data no login', data)
-
     }
 
     const hancleCancelRegister = () => {

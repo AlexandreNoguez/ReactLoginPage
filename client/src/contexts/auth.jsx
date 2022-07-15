@@ -39,10 +39,10 @@ function AuthContextProvider({ children }) {
 
     const handleLogin = async (email, password) => {
         const response = await createSession(email, password);
-        console.log("response.data", response);
+        // console.log("response.data", response);
         const { user } = response.data;
         const { token } = response.data;
-        // console.log("response", response);
+
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("token", token);
 

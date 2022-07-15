@@ -26,9 +26,9 @@ function HomePage() {
             const response = await getRepositories(user?._id, query);
             setRepositories(response.data);
             setLoading(false);
-            console.log(" loadData", response)
+            // console.log(" loadData", typeof (response.data))
         } catch (error) {
-            console.log(error)
+            console.error(error)
             setLoadingError(true);
         }
     };
@@ -38,6 +38,8 @@ function HomePage() {
     }, []);
 
     const handleSearch = (query) => {
+        if (query.data)
+            console.log("typeOf dentro da query", typeof (query))
         loadData(query);
         // console.log("query", query);
     };
@@ -47,6 +49,7 @@ function HomePage() {
     };
     const handleAddNewRepo = async (url) => {
         try {
+            console.log(user)
             await createRepository(user?._id, url);
             loadData();
 

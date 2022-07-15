@@ -16,7 +16,6 @@ function LoginPage() {
         // setLoading(true);
         handleLogin(email, password);
         // setLoading(false);
-        console.log("login", email, password);
     };
 
     return (

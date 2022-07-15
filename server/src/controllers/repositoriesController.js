@@ -7,30 +7,27 @@ exports.registerNewRepository = async (req, res) => {
         const { name, url } = req.body;
         
         const user = await User.findById(user_id)
-        console.log('user', user)
-        console.log('name', name)
-        // if(!user) return res.status(404).send()
+        if(!user) return res.status(404).send()
         
         const repository = await Repository.findOne({
             userId: user_id,
             url,
-            
         })
-        console.log('repository', repository)
-
+        console.log("TESTE REPO POST", repository)
+        
         const newRepository = await Repository.create({
             userId: user_id,
             name,
             url
         })
-        // if(user && name && url){
-        //     console.log('if DENTRO', user, url)
-        //     return res.status(422).send({ message: `Repository ${name} already exists`})
-        // }
-        // console.log(newRepository)
-        // user.password = undefined
-        // user.password2 = undefined
+        
+        if(!newRepository){
+             return res.status(404).send()
+        }
+        
+        console.log("teste criando repo", newRepository, user)
         return res.status(201).send(newRepository)
+
     } catch (err) {
         console.log(err)
         return res.status(400).send({ error: 'Failed creating repository' })

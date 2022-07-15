@@ -20,11 +20,10 @@ export const createNewUser = async (data) => {
 
 export const createSession = async (email, password) => {
     try {
-        // console.log(email)
         return api.post("/user/authenticate", { email, password })
     } catch (error) {
         console.log(error)
-        if(error) return toast.error("Usuário ou senha inválido.")
+        return toast.error("Usuário ou senha inválido.")
     }
 };
 
@@ -55,6 +54,7 @@ export const createRepository = async (userId, repositoryUrl) => {
         toast.success("Repositório adicionado com sucesso.")
         return api.post(url, {name: repositoryName, url: repositoryUrl})
     } catch (error) {
+        console.error("error do create repository", error)
         return toast.error("Ocorreu alguma falha ao adicionar repositório.")        
     }
         

@@ -23,11 +23,14 @@ exports.registerNewUser = async (req, res) => {
         if (!email) {
             return res.status(400).send({ error: 'user already exists' })
         }
-        if (!password && password !== password2) {
+        if (!password) {
             console.log(res.message)
             return res
                 .status(400)
-                .send({ error: 'Invalid password or does not match' })
+                .send({ error: 'Invalid password ' })
+        }
+        if (password !== password2){
+            return res.status(400).send({ error: "Password does not match" })
         }
 
         if (await User.findOne({ email })) {

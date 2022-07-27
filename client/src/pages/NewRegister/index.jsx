@@ -1,21 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { createNewUser } from '../../services/api'
-import { useNavigate } from 'react-router-dom'
 import { registerNewUserSchema } from '../../yupSchema/validateForm';
 import PhoneInput from 'react-phone-number-input/input'
 
 import 'react-phone-number-input/style.css'
 import "./styles.css";
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../contexts/auth';
 
 
 // console.log('yup', type(yup))
 function NewRegister() {
+    const { navigate } = useContext(AuthContext)
     const [phoneValue, setPhoneValue] = useState()
-    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
 
@@ -84,7 +84,7 @@ function NewRegister() {
                         <span className='error-message'>
                             {errors?.email?.type && <span>{errors.email.message}</span>}
                         </span>
-                        <label htmlFor="phone">Telefone *</label>
+                        <label htmlFor="phone">Telefone</label>
                         <PhoneInput
                             type="tel"
                             name="phone"

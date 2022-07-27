@@ -6,21 +6,22 @@ export const api = axios.create({
 });
 
 export const createNewUser = async (data) => {
-    try {
-        toast.success("Usuário criado com sucesso!")  
-        return api.post("/user", data).then((res) => {
-            console.log("res do create", res)
+    return api.post("/user", data)
+        .then((response) => {
+            toast.success("Usuário criado com sucesso.")
         })
-            
-    } catch (error) {
-        console.error("createNewUser", error)
-        return toast.error("Usuário já existente, tente recuperar a senha.") 
-    }
+        .catch((error) => {
+            console.error(error)
+        })
 };
 
 export const createSession = async (email, password) => {
     try {
         return api.post("/user/authenticate", { email, password })
+            .catch((error) =>{
+                console.error(error)
+                return toast.error("Usuário ou senha inválidos")
+            })
     } catch (error) {
         console.log(error)
         return toast.error("Usuário ou senha inválido.")

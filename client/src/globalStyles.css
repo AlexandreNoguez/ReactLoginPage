@@ -32,8 +32,8 @@ a {
 
 :root {
     /* colors  */
-    --background: #342220;
-    --background-secondary: #632f53;
+    --background: #334155;
+    --background-secondary: #1e293b;
     --background-button: #7a6f5d;
     --background-repo: #a08b81;
     --title: #fdf2c5;
@@ -51,3 +51,8 @@ a {
 body {
     background-color: var(--background);
 }
+
+/* --background: #342220;
+    --background-secondary: #632f53;
+    --background-button: #7a6f5d;
+    --background-repo: #a08b81; */

@@ -23,18 +23,21 @@ function AuthContextProvider({ children }) {
     }, []);
 
     const handleCreateNewUser = async (data) => {
+        try {
+            const response = await createNewUser(data);
 
-        const response = await createNewUser(data);
+            const { user } = response.data;
+            const { token } = response.data;
 
-        const { user } = response.data;
-        const { token } = response.data;
+            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("token", token);
 
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", token);
-
-        api.defaults.headers.Authorization = `Bearer ${token}`;
-        setUser(user);
-        navigate("/home");
+            api.defaults.headers.Authorization = `Bearer ${token}`;
+            setUser(user);
+            navigate("/home");
+        } catch (error) {
+            console.error("Error no Context", error)
+        }
     };
 
     const handleLogin = async (email, password) => {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import DeleteModal from "../DeleteModal";
 
 function Repositories({ handleDeleteRepo, handleAddNewRepo, repositories }) {
     const [newRepo, setNewRepo] = useState("");
@@ -33,8 +34,9 @@ function Repositories({ handleDeleteRepo, handleAddNewRepo, repositories }) {
                             onClick={() => handleDeleteRepo(repo)}
                             type="submit"
                         >
-                            Apagar
+                            Deletar
                         </button>
+                        {/* <DeleteModal modalIsOpen={modalIsOpen} /> */}
                     </li>
                 ))}
             </ul>

@@ -23,6 +23,12 @@ function HomePage() {
 
     const loadData = async (query = "") => {
         try {
+            // if (query === "") {
+            //     (console.log("typeOf dentro da query", typeof (query)))
+            //     return (
+            //         <p>Não foi encontrado</p>
+            //     )
+            // }
             const response = await getRepositories(user?._id, query);
             setRepositories(response.data);
             setLoading(false);
@@ -38,15 +44,15 @@ function HomePage() {
     }, []);
 
     const handleSearch = (query) => {
-        if (query.data)
-            console.log("typeOf dentro da query", typeof (query))
         loadData(query);
         // console.log("query", query);
     };
+
     const handleDeleteRepo = async (repository) => {
         await deleteRepository(user?._id, repository._id);
         loadData();
     };
+
     const handleAddNewRepo = async (url) => {
         try {
             console.log(user)

@@ -2,7 +2,8 @@ import axios from 'axios'
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-    baseURL: "http://localhost:3333/api",
+    // baseURL: "http://localhost:3333/api",
+    baseURL: import.meta.env.VITE_API_URL,
 });
 
 export const createNewUser = async (data) => {
